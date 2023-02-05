@@ -15,7 +15,7 @@ const Home = (props) => {
       <div className="d-flex justify-content-center">
         <Card className="w-50">
           <CardBody>
-            <Table striped className="">
+            <Table striped>
               <thead>
                 <tr>
                   <th>#</th>

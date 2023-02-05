@@ -17,30 +17,25 @@ const Lists = (props) => {
 
   const addItemHandler = (event) => {
     event.preventDefault();
-    const newItem_Name = event.target.newItem.value?.trim();
-    const qty = Number(event.target.newItem_Qty.value);
+    const newItemName = event.target.newItem.value?.trim();
+    const qty = Number(event.target.newItemQty.value);
     const doesItemExist =
       data?.findIndex(
-        (item) => item.name?.toLowerCase() === newItem_Name.toLowerCase()
+        (item) => item.name?.toLowerCase() === newItemName.toLowerCase()
       ) !== -1;
     if (doesItemExist) {
       const prevData = [...data];
       const modifiedData = prevData.map((item) => {
-        if (item.name.toLowerCase() === newItem_Name.toLowerCase())
+        if (item.name.toLowerCase() === newItemName.toLowerCase())
           item.qty = item.qty + qty;
         return item;
       });
       setData(modifiedData);
     } else {
-      const newItem = { name: newItem_Name, qty: qty };
+      const newItem = { name: newItemName, qty: qty };
       setData((prevData) => [...prevData, newItem]);
     }
-    document.getElementsByTagName("form")?.[0].reset();
-    // if new item is already present in the Inventory then we have to increase the Qty of that item
-    // data.forEach((item, index) => {
-    //   if (item.name.includes(newItem_Name)) {
-    //   }
-    // });
+    document.getElementsById("form")?.reset();
   };
   const increaseQtyHandler = (itemName) => {
     setData((prevData) =>
@@ -50,15 +45,14 @@ const Lists = (props) => {
             ...item,
             qty: item.qty + 1,
           };
-        console.log(item);
         return item;
       })
     );
   };
-  const deccreaseQtyHandler = (itemName) => {
+  const decreaseQtyHandler = (itemName) => {
     setData((prevData) =>
       prevData.map((item) => {
-        if (item.name === itemName && item.qty > 1)
+        if (item.name === itemName)
           return {
             ...item,
             qty: item.qty - 1,
@@ -87,14 +81,14 @@ const Lists = (props) => {
                     />
                   </div>
                   <div className={classes.quantitySection}>
-                    <label htmlFor="newItem_Qty" className={classes.label}>
+                    <label htmlFor="newItemQty" className={classes.label}>
                       Quantity*
                     </label>
                     <div className="d-flex">
                       <input
                         type="number"
                         min={1}
-                        id="newItem_Qty"
+                        id="newItemQty"
                         className={classes.quantityInput}
                       />
                       <button type="submit" className="btn btn-primary">
@@ -127,7 +121,7 @@ const Lists = (props) => {
                             />
                             <Decrement
                               alt="down"
-                              onClick={() => deccreaseQtyHandler(item.name)}
+                              onClick={() => decreaseQtyHandler(item.name)}
                               className={`${classes.ctaBtn} ${
                                 item.qty === 1 ? classes.btnDisabled : ""
                               }`}
