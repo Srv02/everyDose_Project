@@ -1,7 +1,8 @@
 import "./App.css";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Lists, MyNav, Home } from "./components";
 import { Routes, Route } from "react-router-dom";
+import { getDataFromLocalStorage, setDataToLocalStorage } from "./utils";
 
 function App() {
   const initialState = [
@@ -9,7 +10,12 @@ function App() {
     { name: "Item2", qty: 3 },
     { name: "Item3", qty: 2 },
   ];
-  const [data, setData] = useState(initialState);
+  
+  const [data, setData] = useState(getDataFromLocalStorage() || initialState);
+
+  useEffect(() => {
+    setDataToLocalStorage(data);
+  } , [data]);
 
   return (
     <div>

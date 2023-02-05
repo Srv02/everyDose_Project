@@ -1,7 +1,7 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="12" height="9.976" viewBox="0 0 15.71 9.976">
     <defs>
         <style>
-            .up-1{fill:none;stroke:#1f2f36;stroke-linecap:round;stroke-linejoin:round;stroke-width:3px}
+            .up-1{fill:none;stroke-linecap:round;stroke-linejoin:round;stroke-width:3px}
         </style>
     </defs>
     <g id="chevron_up" transform="rotate(-90 441.989 550.077)">

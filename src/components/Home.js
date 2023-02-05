@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import { useNavigate } from "react-router-dom";
 import { Table, Card, CardBody } from "reactstrap";
 
@@ -6,7 +6,7 @@ const Home = (props) => {
   const data = props.data;
   let navigate = useNavigate();
   const editButtonHandler = () => {
-    let path = `/lists`;
+    let path = "/lists";
     navigate(path);
   };
   return (
