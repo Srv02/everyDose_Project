@@ -1,0 +1,12 @@
+.inventoryList {
+  display: flex;
+  justify-content: space-between;
+}
+.removeBtn {
+  color: #d73838;
+  background-color: white;
+  border: none;
+}
+.removeBtn:hover {
+  color: #850000;
+}
